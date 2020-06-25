@@ -402,6 +402,7 @@ def set_up_verification_credentials(client):
     client.save()
 
 def renew_verification_token(client):
+    print(client.sumsub_external_user_id)
     sdk_token = get_access_token_for_sdk(client.sumsub_external_user_id, token_lifespan_seconds)
     client.sumsub_sdk_access_token = sdk_token
     client.sumsub_sdk_access_token_expiry = timezone.now() + timezone.timedelta(seconds = token_lifespan_seconds)
@@ -426,8 +427,4 @@ def create_applicant_and_get_verification_url(client):
 #print(get_verification_url('sidiberd'))
 
 
-
-
-
-            
 #scan_address(applicantId='5ed80e030a975a6de48b06be' , currency= 'BTC', direction = 'withdrawal', txn ='' , address = '15VrVsyjoVoANWU5Ye4JbbJscjDRP3ZxyZ')

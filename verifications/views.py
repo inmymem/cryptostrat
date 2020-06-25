@@ -32,6 +32,7 @@ def verification_page(request, identifier):
         for character in identifier[::-1]:
             if character == '_':
                 uuid_part = uuid_part[::-1]
+                #for some reason .rstrip('_' + uuid_part) does not work
                 client_identifier = identifier.rstrip(uuid_part).rstrip('_')
                 break
             uuid_part += character
@@ -59,7 +60,6 @@ def test_verification_page(request, identifier):
                 break
             uuid_part += character
         if len(uuid_part) == 6:
-            print(uuid_part)
             #different lengths depending on identifier
             client = Client.objects.get(localbitcoins_username = client_identifier)
         elif len(uuid_part) == 5:
