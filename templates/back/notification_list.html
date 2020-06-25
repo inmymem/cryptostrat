@@ -1,0 +1,6 @@
+<h1>Raw Notifications</h1>
+<ul>
+    {%for notification in notifications %}
+    <li> {{notification.valid}} {{notification.body}}</li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,41 @@
+<h1> BTC Address Verification</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="address">Address: </label>
+    <input id="address" type="text" name="address" value="">
+    <input type="submit" value="OK">
+    {% if error_message %}
+    <p style="color:red;font-size:20px",>  <b>{{error_message}}</b>  </p>
+    {% endif %}
+    {% if analysis %}
+    
+    <p style="font-size:20px">  Address: <b>{{analysis.address}}</b>  </p>
+    <ul>
+        <li>Risk Score: <b>{{analysis.risk_score}}</b> </li>
+        <li>Last Global Update: <b>{{analysis.last_updated_global}}</b> </li>
+        <li>Last Fast Update: <b>{{analysis.last_updated_fast}}</b> </li>
+        
+        <br/>
+        <br/>
+    
+        <h4>Risk Score Detail: </h4>
+        <li>Dark Market: <b>{{analysis.dark_market_signal}}</b>  </li>
+        <li>Dark Service: <b>{{analysis.dark_service_signal}}</b>  </li>
+        <li>Exchange: <b>{{analysis.exchange_signal}}</b>  </li>
+        <li>Gambling: <b>{{analysis.gambling_signal}}</b>  </li>
+        <li>Illegal Service: <b>{{analysis.gambling_signal}}</b> </li>
+        <li>Marketplace: <b>{{analysis.marketplace_signal}}</b> </li>
+        <li>Miner: <b>{{analysis.miner_signal}}</b> </li>
+        <li>Mixer: <b>{{analysis.mixer_signal}}</b>  </li>
+        <li>Payment: <b>{{analysis.payment_signal}}</b> </li>
+        <li>Ransom: <b>{{analysis.ransom_signal}}</b> </li>
+        <li>Scam: <b>{{analysis.scam_signal}}</b> </li>
+
+        <li>Stolen Coins: <b>{{analysis.stolen_coins_signal}}</b></li>
+        <li>Trusted Exchange: <b>{{analysis.trusted_exchange_signal}}</b></li>
+        <li>Wallet Signal: <b>{{analysis.wallet_signal}}</b></li>
+
+    </ul>
+    {% endif %}
+</form>

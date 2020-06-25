@@ -1,0 +1,93 @@
+{% load static %}
+
+<html>
+	<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--center logo-->
+    <style>
+      img {
+        display: block;
+        width:100%;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0px;
+        margin-top: 20px;
+        padding-bottom: 0px;
+      }
+      </style>
+
+    <!-- replace with https://api.sumsub.com/idensic/static/sumsub-kyc.js when going live -->
+    <script src="https://api.sumsub.com/idensic/static/sumsub-kyc.js"></script>
+    <title>Cryptostrat Verification</title>
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" />
+  </head>
+	<body>
+    
+    <img src="{%static '/verification_logo_banner.png' %}" >
+
+    <div id="idensic"></div>
+	</body>
+</html>
+<script>
+  var id = idensic.init(
+    // selector of the WebSDK container (see above)
+    '#idensic',
+    // configuration object (see the settings in the demo)
+    {
+      // provide your clientId (shown in the demo in the top left corner)
+      clientId: 'cryptostrat',
+      // access token generated for $YOUR_USER_ID
+      accessToken: '{{access_token_for_sdk}}',
+      // your user id for which you generated $ACCESS_TOKEN
+      externalUserId: '{{external_id}}',
+      includedCountries: [], 
+      excludedCountries: [ 'AFG', 'ATG', 'ABW', 'BHS', 'BLR', 'BLZ', 'BOL', 'BIH', 'BDI', 'CPV', 'KHM', 'CYM', 'CAF', 'CHN', 'COL', 'COM', 'COD', 'CUB', 'CUW', 'CYP', 'CIV', 'DOM', 'EGY', 'GNQ', 'ERI', 'FJI', 'GIN', 'GNB', 'HTI', 'IND', 'IDN', 'IRN', 'IRQ', 'PRK', 'KGZ', 'LAO', 'LBN', 'LBR', 'LBY', 'MAC', 'MLI', 'MRT', 'MOZ', 'MMR', 'NPL', 'NIC', 'NGA', 'PAN', 'PNG', 'RUS', 'SOM', 'SSD', 'SDN', 'SYR', 'TJK', 'TZA', 'TKM', 'UGA', 'UKR', 'VEN', 'YEM', 'ZWE'], 
+      navConf: { 
+        showWarningScreen: false, 
+        skipWelcomeScreen: false, 
+        skipAgreementsScreen: false, 
+        skipReviewScreen: false, 
+        registration: "disabled" 
+      },
+      uiConf: { 
+        lang: "en",
+        steps: { 
+          APPLICANT_REQUEST: {
+            title: 'CRYPTOSTRAT',
+            button: 'Start Verification',
+            },
+          IDENTITY: {
+            stepName: "Identity Document", 
+            },
+          SELFIE: { 
+            stepName: "Liveness Test", 
+            title: "Verification of Liveness", 
+            subTitle: "", 
+            instructions: "" 
+          }, 
+          SELFIE2: { 
+            stepName: "Liveness Test", 
+            title: "Liveness Test", 
+            subTitle: "Cryptostrat Identity Security Process", 
+            instructions: " " 
+            }, 
+          PROOF_OF_RESIDENCE: { 
+            stepName: "UK Proof of Address",
+            title: "United Kingdom Proof of Address",
+            }, 
+        },
+
+      documentsByCountries: {} 
+      
+      }
+       
+    },
+    // function for the WebSDK callbacks
+    function(messageType, payload) {
+      // e.g. just logging the incoming messages
+      console.log('[IDENSIC DEMO] Idensic message:', messageType, payload)
+    }
+  )
+</script>
