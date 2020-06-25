@@ -38,6 +38,8 @@ def verification_page(request, identifier):
         if len(uuid_part) == 6:
             #different lengths depending on identifier
             client = Client.objects.get(localbitcoins_username = client_identifier)
+        elif len(uuid_part) == 5:
+            client = Client.objects.get(phone_number = client_identifier)
         if client.sumsub_sdk_access_token_expiry < timezone.now() or uuid_part not in str(client.uuid):
             raise ValueError('Token Expired')
         return render(request, 'front/sumsub_verification.html', {'external_id': client.sumsub_external_user_id, 'access_token_for_sdk': client.sumsub_sdk_access_token})

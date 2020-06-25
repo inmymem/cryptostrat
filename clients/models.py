@@ -36,8 +36,16 @@ class Client(models.Model):
 
     btc_deposit_address = models.CharField(max_length = 64, editable = True, null= True, blank= True)
 
+    
+
     def __str__(self):
+        if self.localbitcoins_username:
+            return self.localbitcoins_username + ' - LBC'
+        elif self.phone_number:
+            return self.phone_number
         return str(self.uuid)
+    class Meta:
+        ordering = ('localbitcoins_username', 'phone_number', 'uuid')
 
     def lbc_username(self):
         return self.localbitcoins_username
@@ -106,8 +114,8 @@ class Client(models.Model):
 
 
 class Transaction(models.Model):
-    platform = models.CharField(choices = ( ('LBC', 'Localbitcoins'), ('OFF', 'Offsite')), max_length=3, blank=False, editable = False)
-    client = models.ForeignKey(Client, on_delete= models.CASCADE, editable = False)
+    platform = models.CharField(choices = ( ('LBC', 'Localbitcoins'), ('OFF', 'Offsite')), max_length=3, blank=False, editable = False, default= 'OFF')
+    client = models.ForeignKey(Client, on_delete= models.CASCADE)
     action = models.CharField(choices=( ('B', 'Buy'), ('S', 'Sell') ), max_length=1, blank=False, editable = False)
     reference = models.CharField(max_length=30, unique = True, null=True)
     
