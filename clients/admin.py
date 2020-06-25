@@ -114,7 +114,8 @@ class ClientAdmin(admin.ModelAdmin):
     )
     change_form_template = 'admin/custom_change_form.html'
     def response_change(self, request, obj):
-        if "renew_verification_link" in request.POST:
+        if 'renew_verification_link' in request.POST:
+            print('heeeeelp')
             renewed = renew_verification_token(obj)
             if renewed == True:
                 self.message_user(request, "Successfully renewed the verification link.")
