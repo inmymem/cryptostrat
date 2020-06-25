@@ -235,7 +235,10 @@ def process_notification(request):
             except Exception as e:
                 telegram.send_critical_error_message.delay(f'Sumsub - error creating Person for {client.uuid}')
             client.liveness_verified = is_liveness_verified(applicant_data)
-            client.name_match_checked = do_names_match(client, person)
+            if client.localbitcoins_real_name:
+                client.name_match_checked = do_names_match(client, person)
+            else:
+                client.name_match_checked = True
             ##############
             name_components = [person.first_name, person.middle_name, person.last_name]
             client.real_name = ''

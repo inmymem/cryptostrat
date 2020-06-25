@@ -50,14 +50,15 @@ class ClientAdmin(admin.ModelAdmin):
         'sumsub_sdk_access_token',
         'sumsub_sdk_access_token_expiry',
         )
-        if obj.email: # editing an existing object
-            disabled_fields += ('email',)
-        if obj.phone_number: # editing an existing object
-            disabled_fields += ('phone_number',)
-        if obj.telegram_username: # editing an existing object
-            disabled_fields += ('telegram_username',)
-        if obj.localbitcoins_username: # editing an existing object
-            disabled_fields += ('localbitcoins_username',)
+        if obj:
+            if obj.email: # editing an existing object
+                disabled_fields += ('email',)
+            if obj.phone_number: # editing an existing object
+                disabled_fields += ('phone_number',)
+            if obj.telegram_username: # editing an existing object
+                disabled_fields += ('telegram_username',)
+            if obj.localbitcoins_username: # editing an existing object
+                disabled_fields += ('localbitcoins_username',)
         if not request.user.is_superuser:
             disabled_fields += (
                 'real_name',
