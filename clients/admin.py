@@ -33,7 +33,8 @@ class ClientAdmin(admin.ModelAdmin):
     #readonly_fields
     def get_form(self, request, obj= None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
-        #form.base_fields['sumsub_sdk_access_token_expiry'].widget = forms.DateTimeInput(format = '%m/%d/%Y %H:%M:%S')
+        form.base_fields['sumsub_sdk_access_token_expiry'] = forms.DateTimeField(input_formats = '%d/%m/%Y %H:%M:%S')
+        form.base_fields['sumsub_sdk_access_token_expiry'].widget = forms.DateTimeInput(format = '%d/%m/%Y %H:%M:%S')
         disabled_fields = (
         'real_name',
         'company_name',
@@ -114,8 +115,7 @@ class ClientAdmin(admin.ModelAdmin):
     )
     change_form_template = 'admin/custom_change_form.html'
     def response_change(self, request, obj):
-        if 'renew_verification_link' in request.POST:
-            print('heeeeelp')
+        if 'renew_verification_token' in request.POST:
             renewed = renew_verification_token(obj)
             if renewed == True:
                 self.message_user(request, "Successfully renewed the verification link.")

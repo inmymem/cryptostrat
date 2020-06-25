@@ -24,9 +24,9 @@
                                     <div class="readonly">
                                         {% if "Sumsub token active:" in field.label_tag %}
                                             {% if field.contents == 'True' %}
-                                                <input type="submit" style="background-color: #4CAF50; margin: -5px 30px;" value=" Active (Renew Verification Link)" name="renew_verification_link"/>
+                                                <input type="submit" style="background-color: #4CAF50; margin: -5px 30px;" value=" Active (Renew Verification Link)" name="renew_verification_token"/>
                                             {% elif field.contents == 'False'%}
-                                                <input type="submit" style="background-color: #ba2121; margin: -5px 30px;" value=" Inactive (renew_verification_token)" name="renew_verification_link"/>
+                                                <input type="submit" style="background-color: #ba2121; margin: -5px 30px;" value=" Inactive (renew_verification_token)" name="renew_verification_token"/>
                                             {% elif field.contents == 'None' %}
                                                 <input type="submit" style="background-color: #0c147c; margin: -5px 30px;" value=" Create Application" name="create_application"/>
                                             {%endif%}

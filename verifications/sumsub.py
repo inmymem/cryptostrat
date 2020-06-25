@@ -402,7 +402,6 @@ def set_up_verification_credentials(client):
     client.save()
 
 def renew_verification_token(client):
-    print(client.sumsub_external_user_id)
     sdk_token = get_access_token_for_sdk(client.sumsub_external_user_id, token_lifespan_seconds)
     client.sumsub_sdk_access_token = sdk_token
     client.sumsub_sdk_access_token_expiry = timezone.now() + timezone.timedelta(seconds = token_lifespan_seconds)
