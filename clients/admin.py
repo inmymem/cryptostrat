@@ -33,7 +33,7 @@ class ClientAdmin(admin.ModelAdmin):
     #readonly_fields
     def get_form(self, request, obj= None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
-        form.base_fields['sumsub_sdk_access_token_expiry'].widget = forms.DateTimeInput(format = '%m/%d/%Y %H:%M:%S')
+        #form.base_fields['sumsub_sdk_access_token_expiry'].widget = forms.DateTimeInput(format = '%m/%d/%Y %H:%M:%S')
         disabled_fields = (
         'real_name',
         'company_name',
