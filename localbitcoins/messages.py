@@ -32,8 +32,6 @@ def send_within_limits_ending_message(contact_id):
     message_2 = """To access our offer more easily and directly from our profile, bookmark us: 
 
     https://localbitcoins.com/accounts/profile/Cryptostrat.co.uk/
-    
-    Feel free to drop us a message on Whatsapp or Telegram (+447751189354) especially if you have any questions or want to negotiate pricing! We do special offers, prices and discounts for our regular customers and bulk buyers/sellers.
 
     Thank you for the trade and we hope to see you again soon.
     """
@@ -101,8 +99,6 @@ def send_st0_to_st1_ending_message(contact_id):
     message_2 = """To access our offer more easily and directly from our profile, bookmark us: 
 
     https://localbitcoins.com/accounts/profile/Cryptostrat.co.uk/
-    
-    Feel free to drop us a message on Whatsapp or Telegram (+447751189354) especially if you have any questions or want to negotiate pricing! We do special offers, prices and discounts for our regular customers and bulk buyers/sellers.
 
     Thank you for the trade and we hope to see you again. 
     """
@@ -189,8 +185,6 @@ def send_st0_to_st2_2K_transaction_ending_message(contact_id):
     message_2 = """To access our offer more easily and directly from our profile, bookmark us: 
 
     https://localbitcoins.com/accounts/profile/Cryptostrat.co.uk/
-    
-    Feel free to drop us a message on Whatsapp or Telegram (+447751189354) especially if you have any questions or want to negotiate pricing! We do special offers, prices and discounts for our regular customers and bulk buyers/sellers.
 
     Thank you for the trade and we hope to see you again. Take care
     """
@@ -277,8 +271,6 @@ def send_st0_to_st2_transaction_ending_message(contact_id):
     message_2 = """To access our offer more easily and directly from our profile, bookmark us: 
 
     https://localbitcoins.com/accounts/profile/Cryptostrat.co.uk/
-    
-    Feel free to drop us a message on Whatsapp or Telegram (+447751189354) especially if you have any questions or want to negotiate pricing! We do special offers, prices and discounts for our regular customers and bulk buyers/sellers.
 
     Thank you for the trade and we hope to see you again. Take care
     """
@@ -387,8 +379,6 @@ def send_st0_to_st3_transaction_ending_message(contact_id):
 
     https://localbitcoins.com/accounts/profile/Cryptostrat.co.uk/
     
-    Feel free to drop us a message on Whatsapp or Telegram (+447751189354) especially if you have any questions or want to negotiate pricing! We do special offers, prices and discounts for our regular customers and bulk buyers/sellers.
-
     Thank you for the trade and we hope to see you again. Take care
     """
     send_message(contact_id,message)
@@ -446,8 +436,6 @@ def send_st1_to_st2_2K_transaction_ending_message(contact_id):
     To access our offers more easily and directly from our profile, bookmark us: 
 
     https://localbitcoins.com/accounts/profile/Cryptostrat.co.uk/
-    
-    Feel free to drop us a message on Whatsapp or Telegram (+447751189354) especially if you have any questions or want to negotiate pricing! We do special offers, prices and discounts for our regular customers and bulk buyers/sellers. 
 
     Thank you for the trade, it is always a pleasure trading with you. We hope to see you again soon for a fast trade. Take care
     """
@@ -501,8 +489,6 @@ def send_st1_to_st2_ending_message(contact_id):
     To access our offers more easily and directly from our profile, bookmark us: 
 
     https://localbitcoins.com/accounts/profile/Cryptostrat.co.uk/
-    
-    Feel free to drop us a message on Whatsapp or Telegram (+447751189354) especially if you have any questions or want to negotiate pricing! We do special offers, prices and discounts for our regular customers and bulk buyers/sellers. You are officially one of them now with more than 5,000£ bought.
 
     Thank you for the trade, it is always a pleasure trading with you. We hope to see you again soon for a fast trade. Take care
     """
@@ -585,8 +571,6 @@ def send_st1_to_st3_ending_message(contact_id):
     To access our offers more easily and directly from our profile, bookmark us: 
 
     https://localbitcoins.com/accounts/profile/Cryptostrat.co.uk/
-    
-    Feel free to drop us a message on Whatsapp or Telegram (+447751189354) especially if you have any questions or want to negotiate pricing! We do special offers, prices and discounts for our regular customers and bulk buyers/sellers. You are officially one of them now with more than 10,000£ bought.
 
     Thank you for the trade, it is always a pleasure trading with you. We hope to see you again soon for a fast trade. Take care
     """
@@ -653,8 +637,6 @@ def send_st2_to_st3_ending_message(contact_id):
     To access our offers more easily and directly from our profile, bookmark us: 
 
     https://localbitcoins.com/accounts/profile/Cryptostrat.co.uk/
-    
-    Feel free to drop us a message on Whatsapp or Telegram (+447751189354) especially if you have any questions or want to negotiate pricing! We do special  offers, prices and discounts for our regular customers and bulk buyers/sellers. You are officially one of them now with more than 10,000£ bought.
 
     Thank you for the trade, it is always a pleasure trading with you. We hope to see you again soon for a fast trade. Take care
     """
@@ -719,8 +701,6 @@ def send_bt0_to_bt1_ending_message(contact_id):
     message_2 = """To access our offers more easily and directly from our profile, bookmark us: 
 
     https://localbitcoins.com/accounts/profile/Cryptostrat.co.uk/
-    
-    Feel free to drop us a message on Whatsapp or Telegram (+447751189354) especially if you have any questions or want to negotiate pricing! We do special offers, prices and discounts for our regular customers and bulk buyers/sellers.
 
     Thank you for the trade and we hope to see you again. Take care
     """
@@ -749,8 +729,6 @@ def send_bt1_ending_message(contact_id):
     message_2 = """To access our offers more easily and directly from our profile, bookmark us: 
 
     https://localbitcoins.com/accounts/profile/Cryptostrat.co.uk/
-    
-    Feel free to drop us a message on Whatsapp or Telegram (+447751189354) especially if you have any questions or want to negotiate pricing! We do special offers, prices and discounts for our regular customers and bulk buyers/sellers.
 
     Thank you for the trade and we hope to see you again. Take care
     """

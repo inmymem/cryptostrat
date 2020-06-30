@@ -186,7 +186,7 @@ class TransactionAdmin(admin.ModelAdmin):
 
     def get_fieldsets(self, request, obj=None):
         if obj is None:
-            return self.fieldsets
+            return ()
         else:
             if obj.platform == 'LBC':
                 fieldsets = (
@@ -223,40 +223,6 @@ class TransactionAdmin(admin.ModelAdmin):
                 )
                 return self.fieldsets + fieldsets
     def change_view(self, request, object_id, form_url='', extra_context=None):
-        
-        self.fieldsets = (
-            # ('Profile', {
-            #     'fields': (
-            #         ('real_name', 'company_name'),
-            #         ('email', 'phone_number', 'telegram_username'),
-            #         ('id_verified', 'liveness_verified', 'address_verified',),
-            #         ('name_match_checked', 'video_verified', 'source_of_funds_verified',),
-            #         'source_of_funds_limit',
-            #         ('total_buy_volume', 'total_sell_volume',)
-            #         ),
-            #     'classes': ('extrapretty'),
-            # }),
-            # ('Localbitcoins', {
-            #     'fields': (
-            #         'localbitcoins_username',
-            #         'localbitcoins_real_name', 
-            #         'localbitcoins_feedback_score', 
-            #         'localbitcoins_trade_count', 
-            #         'localbitcoins_country_code_phone_number', 
-            #         'localbitcoins_last_country_code_ip',
-            #         ),
-            #     'classes': ('wide', 'extrapretty'),
-            #     'description': 'LBC Profile'
-            # }),
-            # ('SumSub', {
-            #     'fields': (
-            #         ('sumsub_external_user_id', 'sumsub_sdk_access_token'),
-            #         'sumsub_sdk_access_token_expiry',
-            #         ('sumsub_verification_link','sumsub_token_active',)
-            #         ),
-            #     'classes': ('collapse in', 'extrapretty'),
-            # }),
-        )
         return super().change_view(request, object_id, form_url)
     # list_filter = ('action', 'platform', 'status',)
     # readonly_fields = ('platform',)
