@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 import uuid
 from clients.verification_limits import st1_limit, st2_limit, st0_and_st1_one_transaction_limit
 from django.utils import timezone
@@ -10,7 +11,7 @@ class Client(models.Model):
     uuid = models.UUIDField(unique = True, default = uuid.uuid4, editable = False)
     real_name = models.CharField(max_length=50, null = True, blank = True)
     company_name = models.CharField(max_length=50, null= True, blank = True)
-    email = models.CharField(max_length=200, null = True, unique= True, blank= True)
+    email = models.EmailField(null = True, unique= True, blank= True)
     phone_number = models.CharField(max_length=20, null = True, unique= True, blank= True)
     telegram_username = models.CharField(max_length=20, null = True, unique= True, blank= True)
 
@@ -36,8 +37,6 @@ class Client(models.Model):
 
     btc_deposit_address = models.CharField(max_length = 64, editable = True, null= True, blank= True)
 
-    
-
     def __str__(self):
         if self.localbitcoins_username:
             return self.localbitcoins_username + ' - LBC'
@@ -45,7 +44,7 @@ class Client(models.Model):
             return self.phone_number
         return str(self.uuid)
     class Meta:
-        ordering = ('localbitcoins_username', 'phone_number', 'uuid')
+        ordering = ('-id','localbitcoins_username', 'phone_number', 'uuid')
 
     def lbc_username(self):
         return self.localbitcoins_username
@@ -112,6 +111,17 @@ class Client(models.Model):
     def get_number_of_transactions(self):
         return(len(self.transaction_set.filter(status='f')))
 
+    def clean(self):
+        # Must have at least one identifier filles
+        identifier_fields = (
+            self.company_name, 
+            self.email,
+            self.phone_number,
+            self.telegram_username, 
+            self.localbitcoins_username,
+            )
+        if all(identifier is None for identifier in identifier_fields):
+            raise ValidationError('Fill at least one identifying field.')
 
 class Transaction(models.Model):
     platform = models.CharField(choices = ( ('LBC', 'Localbitcoins'), ('OFF', 'Offsite')), max_length=3, blank=False, editable = False, default= 'OFF')
@@ -176,3 +186,9 @@ class Transaction(models.Model):
         return st2_limit
     def get_st0_and_st1_one_transaction_limit(self):
         return(st0_and_st1_one_transaction_limit)
+    
+    def margin(self):
+        if self.platform == 'LBC':
+            return round(self.amount_fiat / (self.amount_btc + self.fee_btc) - self.exchange_price, 2)
+    def profit(self):
+        return round(self.margin() * (self.amount_fiat/self.exchange_price), 2)
